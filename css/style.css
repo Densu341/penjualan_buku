@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+  font-size: 14px;
+}
+/*ngator header*/
+#head {
+  width: 100%;
+  height: 100px;
+}
+.hdkiri {
+  float: left;
+  padding: 10px;
+}
+.hdkiri a {
+  font-size: 50px;
+}
+.hdkiri a:hover {
+  text-decoration: none;
+  color: red;
+}
+.hdkiri b {
+  font-size: 50px;
+  color: #000;
+}
+.hdkanan {
+  float: right;
+  padding: 10px;
+}
+.cari {
+  padding: 10px;
+  width: 350px;
+}
+.tombolcari {
+  padding: 10px;
+  width: 70px;
+  background: #4682b5;
+  border: solid 2px #2e8b57;
+  color: #fff;
+}
+.tombolcari:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/*ngator menu*/
+#menu {
+  background: #4682b5;
+  height: 70px;
+}
+.menukiri {
+  float: left;
+}
+.menukiri ul li {
+  list-style: none;
+  display: inline;
+}
+.menukiri ul li a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 50px;
+  padding: 10px;
+  display: inline-block;
+}
+.menukiri ul li a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.menukanan {
+  float: right;
+}
+.menukanan ul li {
+  list-style: none;
+  display: inline;
+}
+.menukanan ul li a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 50px;
+  padding: 10px;
+  display: inline-block;
+}
+.menukanan ul li a:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/*ngator content*/
+#content {
+  width: 100%;
+}
+#contentkiri {
+  float: left;
+  width: 75%;
+}
+.welcome {
+  padding: 20px;
+}
+#contentkanan {
+  margin-top: 20px;
+  float: right;
+  width: 25%;
+}
+/*ngator navigasi*/
+.navkanan {
+  padding: 20px;
+}
+.hdnav {
+  width: 95%;
+  line-height: 50px;
+  background: #4682b5;
+  color: #fff;
+  text-align: center;
+}
+.kategori {
+  width: 95%;
+  line-height: 40px;
+}
+.kategori li {
+  list-style: none;
+  background: #f5f5f5;
+}
+.kategori li a {
+  display: inline;
+  text-decoration: none;
+  color: #4682b5;
+  padding: 10px;
+}
+.kategori li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/*ngator navigasi admin*/
+.hdnavadmin {
+  width: 95%;
+  background: #4682b5;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: #fff;
+  border-bottom: solid 3px #fff;
+}
+.navadmin {
+  width: 95%;
+  background: #4682b5;
+}
+.navadmin li {
+  list-style: none;
+  padding: 15px;
+}
+.navadmin li a {
+  text-decoration: none;
+  color: #fff;
+}
+.navadmin li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/*ngator welcome*/
+.jumbotron img {
+  width: 80%;
+  height: 210px;
+  margin-left: 20px;
+}
+/*ngator produk*/
+.hdproduk {
+  margin: 20px;
+  margin-top: 0px;
+  width: 97%;
+  line-height: 50px;
+  background: #4682b5;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+.tamp_produk {
+  margin: 20px;
+  width: 200px;
+  height: 370px;
+}
+.tamp_produk img {
+  margin-top: 10px;
+  width: 170px;
+  height: 210px;
+}
+.detail {
+  padding: 5px;
+  background: #dc143c;
+  color: #fff;
+  border: none;
+  width: 60px;
+}
+.beli {
+  padding: 5px;
+  background: #4682b5;
+  color: #fff;
+  border: none;
+  width: 60px;
+}
+.detail:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: #2e8b57;
+}
+.beli:hover {
+  background: rgba(0, 0, 0, 0.2);
+  color: 2e8b57;
+}
+/*ngator login*/
+.hdlogin {
+  width: 40%;
+  margin-left: 16px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 50px;
+  background: #4682b5;
+  color: #fff;
+}
+.login {
+  width: 40%;
+}
+/*ngator conten */
+.hdkonten {
+  width: 100%;
+  background: #4682b5;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  color: #fff;
+  border-bottom: solid 3px #fff;
+}
+/*ngator detail buku*/
+.detailbuku p {
+  font-size: 17px;
+}
+.detailbuku img {
+  width: 150px;
+  height: 170px;
+}
+/* ngator keranjang*/
+.hdkeranjang {
+  width: 100%;
+  margin-top: 20px;
+  line-height: 50px;
+  background: #4682b5;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}

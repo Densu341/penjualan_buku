@@ -1,0 +1,328 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Feb 20, 2017 at 05:22 AM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `a`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `buku`
+--
+
+CREATE TABLE IF NOT EXISTS `buku` (
+  `id_buku` int(11) NOT NULL AUTO_INCREMENT,
+  `id_katalog` int(11) NOT NULL,
+  `id_kategori` int(11) NOT NULL,
+  `judul` varchar(90) NOT NULL,
+  `pengarang` varchar(50) NOT NULL,
+  `penerbit` varchar(50) NOT NULL,
+  `hal` varchar(4) NOT NULL,
+  `gambar` varchar(100) NOT NULL,
+  `harga` varchar(11) NOT NULL,
+  `deskripsi` varchar(300) NOT NULL,
+  `tanggal` date NOT NULL,
+  `tanggal_edit` date NOT NULL,
+  PRIMARY KEY (`id_buku`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`id_buku`, `id_katalog`, `id_kategori`, `judul`, `pengarang`, `penerbit`, `hal`, `gambar`, `harga`, `deskripsi`, `tanggal`, `tanggal_edit`) VALUES
+(5, 6, 1, 'Kupinang kau dengan 2 kalimah syahadat', 'abdul', 'abdul press', '98', '20170212080423.jpg', '125000', 'kisah seorang mualaf yang mencintai seorang wanita muslimah', '2017-02-12', '0000-00-00'),
+(6, 7, 1, 'Merah Darah ku', 'abdel', 'abdul press', '124', '20170212101437.jpg', '145000', 'cerita perjuangan rakyat indonesia mempertahankan kemerdekaan', '2017-02-13', '0000-00-00'),
+(7, 6, 1, 'Cinta dia bukan kamu', 'wong elek', 'Diva Press', '56', '20170212145310.jpg', '56800', 'buku uapik', '2017-02-12', '0000-00-00'),
+(8, 4, 4, 'Naruto in the arabic sandalll', 'abdol', 'abdol press', '87', '20170212205949.jpg', '124000', 'perjalanan naruto ke tanah suci(naik haji)', '2017-02-13', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE IF NOT EXISTS `customer` (
+  `id_cus` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_cus` varchar(40) NOT NULL,
+  `email_cus` varchar(40) NOT NULL,
+  `password_cus` varchar(40) NOT NULL,
+  PRIMARY KEY (`id_cus`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id_cus`, `nama_cus`, `email_cus`, `password_cus`) VALUES
+(28, 'Muhammad Abdullah', 'mrboss.abdullah@gmail.com', 'sayangmisscantik'),
+(29, 'Bambang Pamungkas', 'bepe20@gmail.com', 'bepe20'),
+(30, 'noval rzkya', 'noval@gmail.com', '12345'),
+(31, 'fulan', 'fulan@gmail.com', 'fulan'),
+(32, 'nopal', 'nopal@gmail.com', 'nopal'),
+(33, 'Ismed Sofyan', 'ismed@gmail.com', 'ismed14'),
+(34, 'noval', 'nopel@gmail.com', 'nopel'),
+(35, 'w', 'w@a.com', 'w');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dt_transaksi`
+--
+
+CREATE TABLE IF NOT EXISTS `dt_transaksi` (
+  `id_keranjang` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cus` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  `qty` varchar(5) NOT NULL,
+  `harga` varchar(12) NOT NULL,
+  `total_harga` varchar(12) NOT NULL,
+  `total_bayar` varchar(20) NOT NULL,
+  `qty_total` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_keranjang`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hd_transaksi`
+--
+
+CREATE TABLE IF NOT EXISTS `hd_transaksi` (
+  `id_cus` int(11) NOT NULL,
+  `qty_total` varchar(5) NOT NULL,
+  `total_bayar` varchar(20) NOT NULL,
+  `status` enum('pesan','lunas') NOT NULL,
+  `tgl` date NOT NULL,
+  PRIMARY KEY (`id_cus`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hd_transaksi`
+--
+
+INSERT INTO `hd_transaksi` (`id_cus`, `qty_total`, `total_bayar`, `status`, `tgl`) VALUES
+(28, '', '', 'pesan', '0000-00-00'),
+(34, '1', '145000', 'pesan', '0000-00-00'),
+(35, '1', '145000', 'pesan', '0000-00-00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `katalog`
+--
+
+CREATE TABLE IF NOT EXISTS `katalog` (
+  `id_katalog` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kategori` int(11) NOT NULL,
+  `katalog` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_katalog`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `katalog`
+--
+
+INSERT INTO `katalog` (`id_katalog`, `id_kategori`, `katalog`) VALUES
+(4, 4, 'komik naruto'),
+(5, 4, 'komik one piece'),
+(6, 1, 'Kisah Cinta (novel)'),
+(7, 1, 'Novel Kemerdekaan'),
+(8, 4, 'Detektiv Conan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kategori`
+--
+
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori` varchar(40) NOT NULL,
+  PRIMARY KEY (`id_kategori`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `kategori`) VALUES
+(1, 'Novel'),
+(4, 'komik');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pembelian`
+--
+
+CREATE TABLE IF NOT EXISTS `pembelian` (
+  `id_beli` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cus` int(11) NOT NULL,
+  `id_buku` int(11) NOT NULL,
+  `qty` varchar(10) NOT NULL,
+  `harga` varchar(15) NOT NULL,
+  `total_harga` varchar(15) NOT NULL,
+  `total_bayar` varchar(15) NOT NULL,
+  `qty_total` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_beli`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `pembelian`
+--
+
+INSERT INTO `pembelian` (`id_beli`, `id_cus`, `id_buku`, `qty`, `harga`, `total_harga`, `total_bayar`, `qty_total`) VALUES
+(9, 28, 6, '5', '145000', '725000', '', ''),
+(10, 28, 6, '5', '145000', '725000', '', ''),
+(11, 35, 6, '1', '145000', '145000', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `provinsi`
+--
+
+CREATE TABLE IF NOT EXISTS `provinsi` (
+  `id_provinsi` int(11) NOT NULL AUTO_INCREMENT,
+  `provinsi` varchar(30) NOT NULL,
+  `tarif` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_provinsi`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `provinsi`
+--
+
+INSERT INTO `provinsi` (`id_provinsi`, `provinsi`, `tarif`) VALUES
+(1, 'Jawa Timur', '11000'),
+(2, 'Jawa Tengah', ''),
+(3, 'Jawa Barat', ''),
+(4, 'Kalimantan Barat', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `selesai`
+--
+
+CREATE TABLE IF NOT EXISTS `selesai` (
+  `id_selesai` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cus` int(11) NOT NULL,
+  `qty_total` varchar(10) NOT NULL,
+  `bayar` varchar(15) NOT NULL,
+  `total_bayar` varchar(15) NOT NULL,
+  `tgl_order` text NOT NULL,
+  `status` enum('order','lunas') NOT NULL,
+  PRIMARY KEY (`id_selesai`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+
+--
+-- Dumping data for table `selesai`
+--
+
+INSERT INTO `selesai` (`id_selesai`, `id_cus`, `qty_total`, `bayar`, `total_bayar`, `tgl_order`, `status`) VALUES
+(12, 34, '1', '145000', '156000', '2017-02-17', 'order'),
+(13, 28, '5', '725000', '736000', '2017-02-17', 'order'),
+(14, 28, '', '', '0', '2017-02-17', 'order'),
+(15, 35, '1', '145000', '156000', '2017-02-18', 'order');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stok`
+--
+
+CREATE TABLE IF NOT EXISTS `stok` (
+  `id_stok` int(11) NOT NULL AUTO_INCREMENT,
+  `id_buku` int(11) NOT NULL,
+  `stok` varchar(5) NOT NULL,
+  PRIMARY KEY (`id_stok`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `stok`
+--
+
+INSERT INTO `stok` (`id_stok`, `id_buku`, `stok`) VALUES
+(1, 2, '12'),
+(2, 3, '82'),
+(6, 5, '61'),
+(7, 6, '79'),
+(8, 7, '12'),
+(9, 8, '16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `superuser`
+--
+
+CREATE TABLE IF NOT EXISTS `superuser` (
+  `id_su` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_su` varchar(40) NOT NULL,
+  `email_su` varchar(40) NOT NULL,
+  `password_su` varchar(40) NOT NULL,
+  `level` enum('owner','admin') NOT NULL,
+  PRIMARY KEY (`id_su`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `superuser`
+--
+
+INSERT INTO `superuser` (`id_su`, `nama_su`, `email_su`, `password_su`, `level`) VALUES
+(1, 'Muhammad Abdullah', 'alfarizie4000@gmail.com', 'alfajunior20', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tujuan`
+--
+
+CREATE TABLE IF NOT EXISTS `tujuan` (
+  `id_tujuan` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cus` int(11) NOT NULL,
+  `nama_penerima` varchar(50) NOT NULL,
+  `provinsi` varchar(30) NOT NULL,
+  `kabupaten` varchar(25) NOT NULL,
+  `kecamatan` varchar(25) NOT NULL,
+  `kode_pos` varchar(5) NOT NULL,
+  `desa` varchar(25) NOT NULL,
+  `rw` varchar(3) NOT NULL,
+  `rt` varchar(3) NOT NULL,
+  `no_rumah` varchar(5) NOT NULL,
+  `no_telp` varchar(12) NOT NULL,
+  `tarif` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_tujuan`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Dumping data for table `tujuan`
+--
+
+INSERT INTO `tujuan` (`id_tujuan`, `id_cus`, `nama_penerima`, `provinsi`, `kabupaten`, `kecamatan`, `kode_pos`, `desa`, `rw`, `rt`, `no_rumah`, `no_telp`, `tarif`) VALUES
+(13, 34, 'nopel', 'Jawa Timur', 'nganjuk', 'baron', '64394', 'kuniran', '09', '02', '22', '087656775432', '11000'),
+(14, 28, 'Muhammad Abdul Ghoni', 'Jawa Timur', 'Nganjuk', 'Baron', '64394', 'Jekek', '09', '02', '25', '082345431234', '11000'),
+(15, 28, '', '--pilih provinsi--', '', '', '', '', '', '', '', '', ''),
+(16, 35, 'w', 'Jawa Timur', 'n', 'j', '8', 'y', '', 'h', 'h', 'h', '11000');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
